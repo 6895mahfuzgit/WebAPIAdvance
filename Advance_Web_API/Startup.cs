@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Advance_Web_API.Constraints;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace Advance_Web_API
@@ -26,6 +21,11 @@ namespace Advance_Web_API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddRouting(options =>
+            {
+                options.ConstraintMap.Add("constraintEnum", typeof(VehicleConstraint));
+            });
 
             services.AddSwaggerGen(c =>
             {
