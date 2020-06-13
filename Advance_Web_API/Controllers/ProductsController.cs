@@ -20,11 +20,13 @@ namespace Advance_Web_API.Controllers
         }
 
         // GET: api/Product/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id:int:range(1,5)}")]
+        public string GetProductById(int id)
         {
-            return "product";
+            return "from int vale Id";
         }
+
+       
 
         // POST: api/Product
         [HttpPost]
